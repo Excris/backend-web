@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get ID</title>
+</head>
+<body>
+    <script>
+        //     async function teste() {
+        //         console.log('teste')
+        //         const response = await fetch(`http://localhost:3000/alunos`)
+        //         const data = await response.json();
+        //         console.log(data);
+
+        //         console.log(response)
+        //     }
+        // teste()
+
+        fetch(`http://localhost:3000/alunos/1`)
+        .then(response => response.json())
+        // .then(data => console.log(data[0].name))
+        .then(data => document.body.innerText = JSON.stringify(data,null, 2))
+</script>
+</body>
+</html>

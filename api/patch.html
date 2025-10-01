@@ -1,0 +1,12 @@
+<script>
+    fetch('http://localhost:3000/alunos/2',
+    {
+        method: 'PATCH',
+        headers: {'content-type': 'application/json'},
+        body:JSON.stringify(
+             //Fez alteração 
+            {email:"contato@email.com"}
+        )
+    }
+    )
+</script>

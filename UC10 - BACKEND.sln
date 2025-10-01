@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "loja banco", "loja banco", "{7736CC08-9198-12DC-8BC4-032241890634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lojabanco", "loja banco\lojabanco\lojabanco.csproj", "{22CB5260-C844-31D2-2FAE-DFB838AA12D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22CB5260-C844-31D2-2FAE-DFB838AA12D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22CB5260-C844-31D2-2FAE-DFB838AA12D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22CB5260-C844-31D2-2FAE-DFB838AA12D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22CB5260-C844-31D2-2FAE-DFB838AA12D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22CB5260-C844-31D2-2FAE-DFB838AA12D0} = {7736CC08-9198-12DC-8BC4-032241890634}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9607A729-31D9-4DC4-9329-FC4C4E1889F0}
+	EndGlobalSection
+EndGlobal

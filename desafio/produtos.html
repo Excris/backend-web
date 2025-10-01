@@ -1,0 +1,52 @@
+produtos.html
+<!DOCTYPE html>
+<html lang="pt-Br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="produtos.css">
+</head>
+ 
+<body>
+ 
+    <ul id="lista-produtos"></ul>
+ 
+    <script>
+        // https://fakestoreapi.com/products
+ 
+        fetch("https://fakestoreapi.com/products")
+            .then(response => response.json())
+
+            // Aqui você recebe o array de produtos 20 itens
+            .then(data => {
+
+                // Pega a referência da <ul> vazia do HTML.
+                const listaProduto = document.getElementById('lista-produtos');
+
+                // Percorre todos os produtos da API um por um.
+                data.forEach(produto => {
+                    //Cria um novo <li> para cada produto.
+                    const produtoLi = document.createElement('li');
+                    // class para cada <li>
+                    produtoLi.classList.add<("produto-item");
+                    
+                    produtoLi.innerHTML = `
+                        
+                        <img class="produto-imagem" src="${produto.image}" alt="${produto.title}">
+                        <h2 class="produto">${produto.title}</h2>
+                        <p class="preco">Preço: $${produto.price}</p>
+                        <a class="btn-link" href="produto.html?id=${produto.id}">Ver produto</a>
+                        <hr class="produto-separador">
+                    `;
+                    listaProduto.appendChild(produtoLi);
+                });
+            });
+ 
+    </script>
+    
+</body>
+ 
+</html>
+ 

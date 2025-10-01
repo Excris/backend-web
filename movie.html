@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .movies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .movie-card {
+            width: 200px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .movie-card:hover{
+            transform: scale(1.05);
+        }
+        .movie-card img{
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .movie-card h3{
+            margin: 30px 0 5px 0;
+            font-size: 1.1em;
+        }
+        .movie-card p{
+            margin: 0 10px 10px 10px;
+            font-size: 0.9rem;
+            color:#555;
+        }
+    </style>
+    <div class="movies-container" id="movies">
+        <!-- <div class="movie-card">
+            <img src="" alt="" >
+            <h3>Titulo</h3>
+            <p>...</p> -->
+        </div>
+
+    </div>
+
+    <script>
+
+        
+        const apikey = "65e63aea033a31aa86c0ac665ad84095"; //APLICAÇÃO DA CHAVE
+        const movieContainer = document.getElementById('movies')
+        // fetch(`https://api.themivieldb.org/3/movie/popular?api_key${apikey}&language=pt-BR&page=1`)
+        // .then(Response => Response.json())
+        // .then(data => console.log(data))
+
+
+        // async seria de maneira acicrona
+        async function fetchPopularMovies(){
+            const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=pt-BR&page=1`);
+
+            console.log(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=pt-BR&page=1`);
+
+
+            console.log(response);
+            const data = await response.json();
+            console.log(data)
+            console.log(data.results);
+            console.log(data.results[0].original_title)
+            displayMovie(data.results)
+        }
+// apenas vai receber filmes função
+        function displayMovie(movies){
+            movieContainer.innerHTML = '';
+            movies.forEach(movies => {
+                const movieCard = document.createElement('div')
+                movieCard.classList.add('movie-card');
+
+                movieCard.innerHTML=`
+                <div class="movie-card">
+            <img src="https://image.tmdb.org/t/p/w500${movies.poster_path}" alt="${movies.original_title}" >
+            <h3>${movies.original_title}</h3>
+            <p>${movies.overview.substring(0, 100)}</p>
+            `;
+
+                movieContainer.appendChild(movieCard);
+            });
+        }
+        fetchPopularMovies()
+    </script>
+</body>
+</html>

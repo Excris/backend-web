@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Aplicação -->
+    <title>POST</title>
+</head>
+<body>
+    
+    <main class="pag-inicial">
+        <div class="registro">
+            <input class="name">
+            <br>
+            <input class="email">     
+        </div>
+    </main>
+    <style>
+        
+        .pag-inicial{
+            background: red;
+            width: 250px;
+            margin: 50px;
+            border-radius: 5;
+        }
+        .registro{
+            background: red;
+            width: 100%;
+            display: flex;
+            margin: 20;
+        }
+        *{
+            background: #bebdbd;
+        }
+        .name{
+            background: red;
+        }
+        .email{
+            background: #1410f0;
+        }
+    </style>
+    <script>
+        /*
+   * ----------------------------------------------
+   * Exemplo de criação de recurso (POST) com fetch
+   * ----------------------------------------------
+   * Este script envia um novo "aluno" para o
+   * JSON-Server rodando em http://localhost:3000/alunos
+   */
+
+    // 1️⃣ Objeto que representa os dados que serão enviados
+  // Aqui simulamos um "novo aluno"
+        // Formato de  array
+        const post = {name: "Maria", email: "maria@email.com"
+        // 👉 Você pode adicionar outros campos, ex:
+    // age: 20,
+    // curso: "Engenharia"
+    };
+    //método HTTP que queremos usar
+        const config = {
+            method: "POST",
+            //cabeçalhos
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(post)
+        }
+        fetch('http://localhost:3000/alunos',config)
+        .then(response => response.json())
+        .then(data => console.log('Aluno foi Criado ', data))
+
+        // Formato De Delete
+        
+    </script>
+</body>
+</html>
