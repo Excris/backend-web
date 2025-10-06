@@ -63,6 +63,7 @@ C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\lojabanco.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\lojabanco.RazorAssemblyInfo.cache
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\lojabanco.RazorAssemblyInfo.cs
+C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\lojabanco.sourcelink.json
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\cristhian.esfernande\Downloads\UC10 - BACKEND\loja banco\lojabanco\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json

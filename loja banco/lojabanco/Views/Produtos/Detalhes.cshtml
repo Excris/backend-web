@@ -1,0 +1,10 @@
+@Model lojabanco.Models.ProdutoModel
+ 
+<h1>Detalhes do produto</h1>
+ 
+<p>ID: @Model.Id</p>
+<p>NOME:@Model.Nome </p>
+<p>PREÇO: R$ @Model.Preco </p>
+<p>DESCRIÇÃO:@Model.Descricao </p>
+ 
+<a href='@Url.Action("Index" ,"Produtos")' class="btn btn-primary">Voltar</a>
