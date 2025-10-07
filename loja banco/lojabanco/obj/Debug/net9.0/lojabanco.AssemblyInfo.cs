@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lojabanco")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01094889e450c9484b9013690c1faef2c50a0698")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+672674ea3a8ea502a4d1c08d2dcfa24288474ba5")]
 [assembly: System.Reflection.AssemblyProductAttribute("lojabanco")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lojabanco")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

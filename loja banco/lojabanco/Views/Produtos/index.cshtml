@@ -24,6 +24,7 @@
       <td>@produto.Preco</td>
       <td>
         <a href='@Url.Action("Detalhes","Produtos", new {id = produto.Id})" class="btn btn-primary btn-sm'>Ver</a>
+        <a href='@Url.Action("Editar", "Produtos", new {id = produto.Id})' class="btn btn-primary btn-sm">Editar</a>
         <a href="" class="btn btn-primary btn-sm">Editar</a>
         <form action="">
             <input type="text">

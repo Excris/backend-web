@@ -7,7 +7,9 @@ namespace lojabanco.Data
 {
     public class ProdutoRepository
     {
-        private string connectionString = "Server=TIT0577572W11-1\\SQLEXPRESS;Database=LojaMvc;TrustServerCertificate=true;Trusted_Connection=true;MultipleActiveResultSets=true";
+        private string connectionString = "Server=DESKTOP-VCBMM31;Database=LojaMvc;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true";
+        // Conexão SQL SENACSP 
+        // private string connectionString = "Server=TIT0577572W11-1\\SQLEXPRESS;Database=LojaMvc;TrustServerCertificate=true;Trusted_Connection=true;MultipleActiveResultSets=true";
 
         // --- MÉTODO GetProdutos CORRIGIDO ---
         public List<ProdutoModel> GetProdutos()

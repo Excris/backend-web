@@ -1,0 +1,22 @@
+@model lojabanco.Models.ProdutoModel
+<h1>Editar Produto</h1>
+
+<form method="POST">
+    <div class="mb-3">
+        <input type="text" asp-for="Id">  
+
+
+        <label class="form-label" asp-for="Nome">Nome</label>
+        <input type="text" class="form-control" id="nome" asp-for="Nome">
+
+        <label for="preco" class="form-label" asp-for="Preco">Preço</label>
+        <input type="text" class="form-control" id="preco" asp-for="Preco">
+
+        <label asp-for="Descricao" class="form-label">Descriçao</label>
+        <textarea type="text" class="form-control" id="descricao" asp-for="Descricao"></textarea>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button asp-action="Index" class="btn btn-secondary">Cancelar</button>
+  
+    </div>
+</form>
