@@ -8,15 +8,48 @@
 
         <label class="form-label" asp-for="Nome">Nome</label>
         <input type="text" class="form-control" id="nome" asp-for="Nome">
+        <span asp-validation-for=nome class="text-danger"></span>
 
         <label for="preco" class="form-label" asp-for="Preco">Preço</label>
         <input type="text" class="form-control" id="preco" asp-for="Preco">
+        <span asp-validation-for=Preco class="text-danger"></span>
 
         <label asp-for="Descricao" class="form-label">Descriçao</label>
         <textarea type="text" class="form-control" id="descricao" asp-for="Descricao"></textarea>
+        <span asp-validation-for=Descricao class="text-danger"></span>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
         <button asp-action="Index" class="btn btn-secondary">Cancelar</button>
-  
     </div>
+    <div>
+    </div>
+    @section Scripts{
+ 
+ 
+    <script>
+        // o evento 'DOMContentLoaded' garante que o código javascript só será executado após todo o html da página ter sido carregado e analisado
+        document.addEventListener('DOMContentLoaded', function(){
+ 
+            const editarForm = document.getElementById('editarForm');
+            const confirmarEditarModal = new bootstrap.Modal(document.getElementById('confirmarEditarModal'));
+            const confirmarEditarBtn = document.getElementById('confirmarEditarBtn');
+ 
+            editarForm.addEventListener('submit', function (event){
+                event.preventDefault(); // impede o envio padrão do formulario
+                confirmarEditarModal.show(); // exibir o modal de confimação
+            })
+        })
+    </script>
+ 
+    <script>
+        $.validator.method.number = function(value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s.,]\d{3})+)(?:[:.,]\d+)?$/.test(value.replace(/,/g, '.'));
+        }
+ 
+        $.validator.methods.range = function (value, element, param) {
+        var val = value.replace(",", ".");
+        return this.optional(element) || (val >= param[0] && val <= param[1]);
+        };
+    </script>
+    }
 </form>

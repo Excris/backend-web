@@ -11,6 +11,9 @@ namespace lojabanco.Models
     {
         public int Id { get; set; }
 
+        [Display(nameof = "Nome")]
+        [Required(ErrorMessage = "O campo NOme é obrigaroeio.")]
+
         // SEU CÓDIGO ATUAL (provavelmente):
         // public string Nome { get; set; } = null!;
         // public string Descricao { get; set; } = null!;

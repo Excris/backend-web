@@ -7,9 +7,9 @@ namespace lojabanco.Data
 {
     public class ProdutoRepository
     {
-        private string connectionString = "Server=DESKTOP-VCBMM31;Database=LojaMvc;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true";
+        // private string connectionString = "Server=DESKTOP-VCBMM31;Database=LojaMvc;Trusted_Connection=true;TrustServerCertificate=true;MultipleActiveResultSets=true";
         // Conexão SQL SENACSP 
-        // private string connectionString = "Server=TIT0577572W11-1\\SQLEXPRESS;Database=LojaMvc;TrustServerCertificate=true;Trusted_Connection=true;MultipleActiveResultSets=true";
+        private string connectionString = "Server=TIT0577572W11-1\\SQLEXPRESS;Database=LojaMvc;TrustServerCertificate=true;Trusted_Connection=true;MultipleActiveResultSets=true";
 
         // --- MÉTODO GetProdutos CORRIGIDO ---
         public List<ProdutoModel> GetProdutos()
@@ -68,6 +68,34 @@ namespace lojabanco.Data
                 }
             }
             return produto;
+        }
+        public bool UpdateProduto(ProdutoModel produto)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    // Mudando nome da variável para demonstrar que o comportamento é o mesmo
+                    string sql = "UPDATE Produtos SET Nome = @Nome, Descricao = @Descricao, Preco = @Preco WHERE Id = @Id";
+
+                    var command = new SqlCommand(sql, connection);
+
+                    command.Parameters.AddWithValue("@Nome", produto.Nome);
+                    command.Parameters.AddWithValue("@Descricao", produto.Descricao);
+                    command.Parameters.AddWithValue("@Preco", produto.Preco);
+                    command.Parameters.AddWithValue("@Id",produto.Id);
+
+                    // ExecuteNonQuery é usado para comandos que não retorna dados (update, delete e insert)
+                    // Ele retorna o número de linha afetadas
+                    int linhaAfetadas = command.ExecuteNonQuery();
+                    return linhaAfetadas > 0;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
         }
     }
 }
