@@ -34,7 +34,9 @@ namespace lojabanco.Data
                             // Coluna 2 = Descricao
                             Descricao = reader.GetString(2),
                             // Coluna 3 = Preco
-                            Preco = reader.GetDecimal(3)
+                            Preco = reader.GetDecimal(3),
+                            // O campo `ImagemUrl` é lido, tratando a possibilidade de ser nulo no banco.
+                            ImagemUrl = reader.IsDBNull(4) ? null : reader.GetString(4)
                         });
                     }
                 }
@@ -62,7 +64,8 @@ namespace lojabanco.Data
                             Id = reader.GetInt32(0),
                             Nome = reader.GetString(1),
                             Descricao = reader.GetString(2),
-                            Preco = reader.GetDecimal(3)
+                            Preco = reader.GetDecimal(3),
+                            ImagemUrl = reader.IsDBNull(4) ? null: reader.GetString(4)
                         };
                     }
                 }
@@ -84,12 +87,62 @@ namespace lojabanco.Data
                     command.Parameters.AddWithValue("@Nome", produto.Nome);
                     command.Parameters.AddWithValue("@Descricao", produto.Descricao);
                     command.Parameters.AddWithValue("@Preco", produto.Preco);
-                    command.Parameters.AddWithValue("@Id",produto.Id);
+                    command.Parameters.AddWithValue("@ImagemUrl", produto.ImagemUrl ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Id", produto.Id);
 
                     // ExecuteNonQuery é usado para comandos que não retorna dados (update, delete e insert)
                     // Ele retorna o número de linha afetadas
-                    int linhaAfetadas = command.ExecuteNonQuery();
-                    return linhaAfetadas > 0;
+                    int linhasAfetadas = command.ExecuteNonQuery();
+                    return linhasAfetadas > 0;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+        public bool DeleteProduto(int id)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string sql = "DELETE FROM Produtos WHERE Id = @Id";
+                    var command = new SqlCommand(sql, connection);
+
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    int linhasAfetadas = command.ExecuteNonQuery();
+                    return linhasAfetadas > 0;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+        public bool CreateProduto(ProdutoModel produto)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    // A instrução SQL de INSERT foi modificada para incluir a coluna 'ImagemUrl'.
+                    string sql = "INSERT INTO Produtos (Nome, Preco, Descricao, ImagemUrl) VALUES (@Nome, @Preco, @Descricao, @ImagemUrl)";
+                    var command = new SqlCommand(sql, connection);
+
+                    command.Parameters.AddWithValue("@Nome", produto.Nome ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Preco", produto.Preco);
+                    command.Parameters.AddWithValue("@Descricao", produto.Descricao ?? (object)DBNull.Value);
+                    // Adiciona o novo parâmetro para a URL da imagem.
+                    command.Parameters.AddWithValue("@ImagemUrl", produto.ImagemUrl ?? (object)DBNull.Value);
+
+                    int linhasAfetadas = command.ExecuteNonQuery();
+
+                    return linhasAfetadas > 0;
                 }
                 catch (Exception ex)
                 {

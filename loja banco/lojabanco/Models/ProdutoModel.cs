@@ -11,17 +11,19 @@ namespace lojabanco.Models
     {
         public int Id { get; set; }
 
-        [Display(nameof = "Nome")]
-        [Required(ErrorMessage = "O campo NOme é obrigaroeio.")]
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
+        public string Nome { get; set; } = null!;
 
-        // SEU CÓDIGO ATUAL (provavelmente):
-        // public string Nome { get; set; } = null!;
-        // public string Descricao { get; set; } = null!;
+        [Display(Name = "Descrição")]
+        [Required(ErrorMessage = "O campo Descrição é obrigatório.")]
+        public string Descricao { get; set; } = null!;
 
-        // O CÓDIGO CORRIGIDO (o que você precisa fazer):
-        public string? Nome { get; set; }
-        public string? Descricao { get; set; }
-
+        [Display(Name = "Preço")]
+        [Required(ErrorMessage = "O campo Preço é obrigatório.")]
+        [Range(0.01, (double)decimal.MaxValue, ErrorMessage = "O preço deve ser maior que zero.")]
         public decimal Preco { get; set; }
+
+        public string? ImagemUrl { get; set;}
     }
  }
